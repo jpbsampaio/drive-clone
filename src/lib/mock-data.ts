@@ -1,79 +1,74 @@
 export interface File {
-  id: string
-  name: string
-  type: "file" | "folder"
-  url?: string
-  iconColor: string
+  id: string;
+  name: string;
+  type: "file";
+  url: string;
+  parent: string;
+  size: string;
 }
 
-export interface Folder extends File {
-  children: File[]
-}
+export type Folder = {
+  id: string;
+  name: string;
+  type: "folder";
+  parent: string | null;
+};
 
-export const mockData: Folder = {
-  id: "root",
-  name: "My Drive",
-  type: "folder",
-  iconColor: "text-blue-400",
-  children: [
-    {
-      id: "1",
-      name: "Documents",
-      type: "folder",
-      iconColor: "text-yellow-400",
-      children: [
-        {
-          id: "1-1", 
-          name: "Resume.pdf",
-          type: "file",
-          url: "/files/resume.pdf",
-          iconColor: "text-red-400",
-        },
-        {
-          id: "1-2",
-          name: "Cover Letter.docx", 
-          type: "file",
-          url: "/files/cover-letter.docx",
-          iconColor: "text-blue-400",
-        },
-      ],
-    } as Folder,
-    {
-      id: "2",
-      name: "Images", 
-      type: "folder",
-      iconColor: "text-green-400",
-      children: [
-        {
-          id: "2-1",
-          name: "Vacation.jpg",
-          type: "file", 
-          url: "/files/vacation.jpg",
-          iconColor: "text-pink-400",
-        },
-        {
-          id: "2-2",
-          name: "Family.png",
-          type: "file",
-          url: "/files/family.png",
-          iconColor: "text-purple-400",
-        },
-      ],
-    } as Folder,
-    {
-      id: "3",
-      name: "Project Proposal.pptx",
-      type: "file",
-      url: "/files/project-proposal.pptx", 
-      iconColor: "text-orange-400",
-    },
-    {
-      id: "4",
-      name: "Budget.xlsx",
-      type: "file",
-      url: "/files/budget.xlsx",
-      iconColor: "text-green-400",
-    },
-  ],
-}
+export const mockFolders: Folder[] = [
+  { id: "root", name: "root", type: "folder", parent: null },
+  { id: "1", name: "Documents", type: "folder", parent: "root" },
+  { id: "2", name: "Images", type: "folder", parent: "root" },
+  { id: "3", name: "Work", type: "folder", parent: "root" },
+  { id: "4", name: "Presentations", type: "folder", parent: "3" },
+];
 
+export const mockFiles: File[] = [
+  {
+    id: "4",
+    name: "Resume.pdf",
+    type: "file",
+    url: "/files/resume.pdf",
+    parent: "root",
+    size: "1.2 MB",
+  },
+  {
+    id: "5",
+    name: "Project Proposal.docx",
+    type: "file",
+    url: "/files/proposal.docx",
+    parent: "1",
+    size: "2.5 MB",
+  },
+  {
+    id: "6",
+    name: "Vacation.jpg",
+    type: "file",
+    url: "/files/vacation.jpg",
+    parent: "2",
+    size: "3.7 MB",
+  },
+  {
+    id: "7",
+    name: "Profile Picture.png",
+    type: "file",
+    url: "/files/profile.png",
+    parent: "2",
+    size: "1.8 MB",
+  },
+  {
+    id: "9",
+    name: "Q4 Report.pptx",
+    type: "file",
+    url: "/files/q4-report.pptx",
+    parent: "8",
+    size: "5.2 MB",
+  },
+  {
+    id: "10",
+    name: "Budget.xlsx",
+    type: "file",
+    url: "/files/budget.xlsx",
+    parent: "3",
+    size: "1.5 MB",
+  },
+];
