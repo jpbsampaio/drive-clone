@@ -23,7 +23,7 @@ export const mockData: Folder = {
       iconColor: "text-yellow-400",
       children: [
         {
-          id: "1-1",
+          id: "1-1", 
           name: "Resume.pdf",
           type: "file",
           url: "/files/resume.pdf",
@@ -31,23 +31,23 @@ export const mockData: Folder = {
         },
         {
           id: "1-2",
-          name: "Cover Letter.docx",
+          name: "Cover Letter.docx", 
           type: "file",
           url: "/files/cover-letter.docx",
           iconColor: "text-blue-400",
         },
       ],
-    },
+    } as Folder,
     {
       id: "2",
-      name: "Images",
+      name: "Images", 
       type: "folder",
       iconColor: "text-green-400",
       children: [
         {
           id: "2-1",
           name: "Vacation.jpg",
-          type: "file",
+          type: "file", 
           url: "/files/vacation.jpg",
           iconColor: "text-pink-400",
         },
@@ -59,12 +59,12 @@ export const mockData: Folder = {
           iconColor: "text-purple-400",
         },
       ],
-    },
+    } as Folder,
     {
       id: "3",
       name: "Project Proposal.pptx",
       type: "file",
-      url: "/files/project-proposal.pptx",
+      url: "/files/project-proposal.pptx", 
       iconColor: "text-orange-400",
     },
     {

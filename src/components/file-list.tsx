@@ -27,7 +27,7 @@ export function FileList({ files, onFolderClick }: FileListProps) {
                     <span className="text-gray-300">{file.name}</span>
                   </button>
                 ) : (
-                  <Link href={file.url || "#"} className="flex items-center">
+                  <Link href={file.url ?? "#"} className="flex items-center">
                     <File className={`w-5 h-5 mr-3 ${file.iconColor}`} />
                     <span className="text-gray-300">{file.name}</span>
                   </Link>
