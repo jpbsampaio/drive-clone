@@ -4,6 +4,7 @@ import { db } from "~/server/db";
 import {
   files_table as filesSchema,
   folders_table as foldersSchema,
+  type DB_FileType,
 } from "~/server/db/schema";
 import { eq } from "drizzle-orm";
 
@@ -36,5 +37,24 @@ export const QUERIES = {
       currentId = folder[0]?.parent;
     }
     return parents;
+  },
+};
+
+interface CreateFileParams {
+  file: {
+    name: string;
+    size: number;
+    url: string;
+    parent: number;
+  };
+  userId: string;
+}
+
+export const MUTATIONS = {
+  createFile: async ({ file, userId }: CreateFileParams) => {
+    return await db.insert(filesSchema).values({
+      ...file,
+      parent: 1,
+    });
   },
 };
