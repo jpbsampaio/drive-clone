@@ -10,10 +10,7 @@ export default {
     port: parseInt(env.SINGLESTORE_PORT),
     user: env.SINGLESTORE_USER,
     password: env.SINGLESTORE_PASS,
-    database: env.SINGLESTORE_DB_NAME,
-    ssl: {
-      ca: fs.readFileSync("./certs/singlestore_bundle.pem").toString()
-    },
+    database: env.SINGLESTORE_DB_NAME
   },
   tablesFilter: ["drive-tutorial_*"],
 } satisfies Config;
