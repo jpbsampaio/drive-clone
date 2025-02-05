@@ -3,6 +3,7 @@
 # TODO
 
 - [X] set up a database and data model
-- [ ] move folder open state to url
-- [ ] add file uploading
+- [X] move folder open state to url
 - [ ] add auth
+- [ ] add file uploading
+- [ ] add analytics
