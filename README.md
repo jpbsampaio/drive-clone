@@ -8,4 +8,4 @@
 - [X] add file uploading
 - [X] add analytics
 - [X] add delete
-- [ ] add real homepage + landing page
+- [X] add real homepage + landing page
