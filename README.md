@@ -7,3 +7,5 @@
 - [X] add auth
 - [X] add file uploading
 - [ ] add analytics
+- [ ] add delete
+- [ ] add real homepage + landing page

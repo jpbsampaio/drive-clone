@@ -1,26 +1,25 @@
-import "../styles/globals.css"
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-import type React from "react"
-import { ClerkProvider } from '@clerk/nextjs'
-const inter = Inter({ subsets: ["latin"] })
+import "~/styles/globals.css";
 
+import { GeistSans } from "geist/font/sans";
+import { type Metadata } from "next";
+import { ClerkProvider } from "@clerk/nextjs";
+import { PostHogProvider } from "./_providers/posthog-provider";
 export const metadata: Metadata = {
-  title: "Google Drive Clone",
-  description: "A basic Google Drive clone UI",
-}
+  title: "Drive Tutorial",
+  description: "It's like Google Drive, but worse!",
+  icons: [{ rel: "icon", url: "/favicon.ico" }],
+};
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode
-}) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <ClerkProvider>
-      <html lang="en" className="dark">
-        <body className={inter.className}>{children}</body>
+      <html lang="en" className={`${GeistSans.variable}`}>
+        <body>
+          <PostHogProvider>{children}</PostHogProvider>
+        </body>
       </html>
     </ClerkProvider>
-  )
+  );
 }
-
