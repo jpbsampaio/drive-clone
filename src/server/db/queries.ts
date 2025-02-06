@@ -13,13 +13,15 @@ export const QUERIES = {
     return db
       .select()
       .from(foldersSchema)
-      .where(eq(foldersSchema.parent, folderId));
+      .where(eq(foldersSchema.parent, folderId))
+      .orderBy(foldersSchema.id);
   },
   getFiles: function (folderId: number) {
     return db
       .select()
       .from(filesSchema)
-      .where(eq(filesSchema.parent, folderId));
+      .where(eq(filesSchema.parent, folderId))
+      .orderBy(filesSchema.id);
   },
   getAllParentsForFolder: async function (folderId: number) {
     const parents = [];
@@ -31,7 +33,7 @@ export const QUERIES = {
         .where(eq(foldersSchema.id, currentId));
 
       if (!folder[0]) {
-        throw new Error("Parent folder not found");
+        throw new Error(`Pasta não encontrada com ID: ${currentId}`);
       }
       parents.unshift(folder[0]);
       currentId = folder[0]?.parent;
