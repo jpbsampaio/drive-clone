@@ -38,23 +38,28 @@ export const QUERIES = {
     }
     return parents;
   },
+  getFolderById: async function (folderId: number) {
+    const folder = await db
+      .select()
+      .from(foldersSchema)
+      .where(eq(foldersSchema.id, folderId));
+    return folder[0];
+  },
 };
 
-interface CreateFileParams {
-  file: {
-    name: string;
-    size: number;
-    url: string;
-    parent: number;
-  };
-  userId: string;
-}
-
 export const MUTATIONS = {
-  createFile: async ({ file, userId }: CreateFileParams) => {
+  createFile: async function (input: {
+    file: {
+      name: string;
+      size: number;
+      url: string;
+      parent: number;
+    };
+    userId: string;
+  }) {
     return await db.insert(filesSchema).values({
-      ...file,
-      parent: 1,
+      ...input.file,
+      ownerId: input.userId,
     });
   },
 };
