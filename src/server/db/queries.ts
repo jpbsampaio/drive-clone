@@ -6,7 +6,7 @@ import {
   folders_table as foldersSchema,
   type DB_FileType,
 } from "~/server/db/schema";
-import { eq } from "drizzle-orm";
+import { eq, isNull, and } from "drizzle-orm";
 
 export const QUERIES = {
   getFolders: function (folderId: number) {
@@ -33,7 +33,7 @@ export const QUERIES = {
         .where(eq(foldersSchema.id, currentId));
 
       if (!folder[0]) {
-        throw new Error(`Pasta não encontrada com ID: ${currentId}`);
+        throw new Error("Parent folder not found");
       }
       parents.unshift(folder[0]);
       currentId = folder[0]?.parent;
@@ -45,6 +45,16 @@ export const QUERIES = {
       .select()
       .from(foldersSchema)
       .where(eq(foldersSchema.id, folderId));
+    return folder[0];
+  },
+
+  getRootFolderForUser: async function (userId: string) {
+    const folder = await db
+      .select()
+      .from(foldersSchema)
+      .where(
+        and(eq(foldersSchema.ownerId, userId), isNull(foldersSchema.parent)),
+      );
     return folder[0];
   },
 };
