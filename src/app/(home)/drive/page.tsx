@@ -23,13 +23,13 @@ export default async function DrivePage() {
             return redirect("/sign-in");
           }
 
-          const rootFolderId = await MUTATIONS.onboardUser(session.userId);
+            const rootFolderId = await MUTATIONS.onboardUser(session.userId);
 
-          return redirect(`/f/${rootFolderId}`);
-        }}
-      >
-        <Button>Create new Drive</Button>
-      </form>
+            return redirect(`/f/${rootFolderId}`);
+          }}
+        >
+          <Button className="mx-4 rounded-lg bg-white py-1 text-black">Create new Drive</Button>
+        </form>
     );
   }
 

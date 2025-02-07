@@ -23,9 +23,9 @@ export default function DriveContents(props: {
       <div className="mx-auto max-w-6xl">
         <div className="mb-6 flex items-center justify-between">
           <div className="flex items-center">
-            <Link href="/f/1" className="mr-2 text-neutral-300 hover:text-white">
-              Meu Drive
-            </Link>
+            <div className="mr-2 text-neutral-300 hover:text-white">
+              Drive
+            </div>
             {props.parents.map((folder, index) => (
               <div key={folder.id} className="flex items-center">
                 <ChevronRight className="mx-2 text-neutral-500" size={16} />
@@ -50,9 +50,9 @@ export default function DriveContents(props: {
         <div className="rounded-lg border border-neutral-700 bg-neutral-800/50 shadow-xl">
           <div className="border-b border-neutral-700 px-6 py-4">
             <div className="grid grid-cols-12 gap-4 text-sm font-medium text-neutral-400">
-              <div className="col-span-6">Nome</div>
-              <div className="col-span-2">Tipo</div>
-              <div className="col-span-3">Tamanho</div>
+              <div className="col-span-6">Name</div>
+              <div className="col-span-2">Type</div>
+              <div className="col-span-3">size</div>
               <div className="col-span-1"></div>
             </div>
           </div>
